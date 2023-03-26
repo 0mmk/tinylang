@@ -1,0 +1,47 @@
+x = 5;
+y = 3;
+s = "example string";
+
+while ((x ?= 5 && y != 4) || x = 3) {
+    print "Hello World";
+    y = x - 1;
+    y = x;
+}
+
+if (y > x) {
+    print "y is greater than x";
+} elif (x > y) {
+    print "x is greater than y";
+} else {
+    print "then they must be equal";
+}
+
+ConstNumber = 12 * (12 ^ 12) + 12 - 2 / 1;
+variableNumber = 43 + 2;
+ConstString = "my string";
+variableString = "my another string";
+ConstFloatPI = 3.1415;
+variableFloat = 1.23456;
+
+headsOrTails = "Heads" ~ "Tails";
+print headsOrTails;
+
+# This is a comment
+# this is another comment
+
+if (6 /=/ 12) {
+    print "6 and 12's common divisors are exactly the same!";
+}
+
+p = passgen 24;
+
+print p;
+
+check = passcheck p;
+
+print check;
+
+abc = scan();
+xyz = scan();
+
+print abc * xyz + xyz;

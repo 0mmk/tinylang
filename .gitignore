@@ -1,0 +1,9 @@
+*
+
+!scanner.c
+!tinylang.*
+!*.tinylang
+!README.md
+!Makefile
+
+!/*
