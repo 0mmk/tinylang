@@ -1,0 +1,123 @@
+// comment
+
+// printing string
+(print "----------------------------")
+(print "Every string is a multiline string
+
+Line 1
+Line 2
+Line 3")
+(print "----------------------------")
+
+(print "Assigning Variable 'x': 5, 10, 50")
+
+// variable assignment
+(= x 5) // becomes 1
+
+// variable assignment #2
+(= x (+ x 5)) // becomes 10
+
+// variable assignment #3
+(= x (* 10 5)) // becomes 50
+
+// printing variables/numbers
+(print x)
+(print "Printing literal int constant 3: ")
+(print 3)
+
+(print "----------------------------")
+
+(print "Printing complex expression 2 + 5 / 2 * 3")
+
+// complex expression 2 + 5 / 2 * 3
+(print (+ 2 (* (/ 5 2) 3)))
+
+(print "----------------------------")
+
+// while loop printing from 50 to 1
+(print "Printing numbers from 50 to 1: ")
+
+(while (!= x 0)
+  (
+    (print x)
+    (= x (- x 1))
+  )
+)
+
+(= x 0)
+// while loop, dummy iteration 100000 times
+(while (!= x 100000)
+  (= x (+ x 1))
+)
+
+// if statement, insider block won't execute
+(= x 10)
+(if (> x 10) 
+  (
+    (print "This will not execute!
+    This will not be seen!
+    This will not exist!")
+  )
+)
+
+(print "----------------")
+
+// if statment, insider block will execute
+(if (?= x 10) (print "This will be seen!"))
+
+(print "----------------")
+(print "Printing numbers to show combined statements")
+// combined statements
+// functions like if, while, def and only takes one argument for execution, which is block
+(if (< x 100)
+  (print x)
+)
+// however a block can have multiple blocks inside of it, for example
+(if (< x 100) (
+    (print x)
+    (print x)
+  )
+)
+
+
+// function definition with loop, assigments and operations
+(def f (
+    (while (> n 0) (
+        (= a b)
+        (= b c)
+        (= c (+ a b))
+        (= n (- n 1))
+      )
+    )
+    (print a)
+  )
+)
+
+// function definition (recursive)
+(def r (
+    (if (?= n 0) (print a))
+    (if (!= n 0) (
+        (= a b)
+        (= b c)
+        (= c (+ a b))
+        (= n (- n 1))
+        (call r)
+      )
+    )
+  )
+)
+
+(print "----------------------------")
+
+// function call
+// it doesn't matter if it's one line or many lines
+(print "Fibonacci(12) Imperative: ")
+(= n 12) (= a 0) (= b 1) (= c 1)
+(call f)
+
+// function call
+(print "Fibonacci(12) Recursive:  ")
+(= n 12) (= a 0) (= b 1) (= c 1)
+(call r)
+
+(print "----------------------------")

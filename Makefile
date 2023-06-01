@@ -1,23 +1,21 @@
-EXECUTABLE = scanner
-SOURCE_FILES = scanner.c lex.yy.c
-LEX_FILES = tinylang.l
-LEX_OUTPUTS = lex.yy.c
-LEXER = lex
-CC = gcc
-CFLAGS = -Wall
-
-: run
+CC=gcc
+APP=calc
 
 run: build
-	@./$(EXECUTABLE) < testinput.tinylang
+	./$(APP)
 
-build: lex compile
+test: build
+	./$(APP) < test.tinylang
 
-lex:
-	@$(LEXER) $(LEX_FILES)
+build: lex.yy.c y.tab.c
+	$(CC) -c y.tab.c lex.yy.c
+	$(CC) -O3 lex.yy.o y.tab.o calc.c -o $(APP)
 
-compile:
-	@$(CC) -Wall $(CFLAGS) $(SOURCE_FILES) -o $(EXECUTABLE) 2>/dev/null
+lex.yy.c: y.tab.c calc.l
+	lex calc.l
 
-clean:
-	rm -f $(EXECUTABLE) $(LEX_OUTPUTS) *.o
+y.tab.c: calc.y
+	yacc -d calc.y
+
+clean: 
+	rm -rf lex.yy.c y.tab.c calc.dSYM lex.yy.o y.tab.o y.tab.h $(APP)
